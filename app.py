@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Para Ian 🎵✨")
+st.title("Taylor Swift Questions 🎵✨")
 st.markdown("Responde este pequeño cuestionario Swiftie para desbloquear un mensaje especial.")
 
 preguntas = [
