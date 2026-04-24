@@ -36,7 +36,7 @@ if st.button("Descubrir el mensaje"):
         st.warning("⚠️ ¡Falta completar alguna pregunta! Por favor, responde todo primero.")
     
     # Comprobamos si la frase es "tcamo"
-    elif frase_usuario.lower() == "tcamo":
+    elif frase_usuario.lower() == "tcamm":
         st.balloons()
         st.success("¡Lo lograste! ✨")
         
