@@ -49,4 +49,4 @@ if st.button("Descubrir el mensaje"):
         Y AUNQUE TE CÁGUES DE RISA DE MI MALDITO PROYECTO es solo una prueba de lo que tengo que cambiar de eso.
         """)
     else:
-        st.error("Mmm... esa no parece ser la frase correcta
+        st.error("Mmm... esa no parece ser la frase correcta. ¡Revisa las iniciales de tus respuestas y vuelve a intentar!")
