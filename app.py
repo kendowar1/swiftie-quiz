@@ -14,10 +14,13 @@ preguntas = [
 if "respuestas_dict" not in st.session_state:
     st.session_state.respuestas_dict = {}
 
+# Crear los selectbox con index=None para que empiecen vacíos
 for i, pregunta in enumerate(preguntas):
     st.session_state.respuestas_dict[i] = st.selectbox(
         pregunta["p"], 
         options=pregunta["opciones"],
+        index=None,
+        placeholder="Elige una opción...",
         key=f"q{i}"
     )
 
@@ -28,8 +31,12 @@ st.info("💡 ¡Ya casi! Ahora, toma la primera letra de cada respuesta que sele
 frase_usuario = st.text_input("Escribe la frase secreta:", key="frase_final")
 
 if st.button("Descubrir el mensaje"):
-    # Cambiamos a 'tcamo' para que coincida con T-C-A-M-O
-    if frase_usuario.lower() == "tcamo":
+    # Validación: verificar si falta alguna respuesta
+    if any(val is None for val in st.session_state.respuestas_dict.values()):
+        st.warning("⚠️ ¡Falta completar alguna pregunta! Por favor, responde todo primero.")
+    
+    # Comprobamos si la frase es "tcamo"
+    elif frase_usuario.lower() == "tcamo":
         st.balloons()
         st.success("¡Lo lograste! ✨")
         
@@ -42,4 +49,4 @@ if st.button("Descubrir el mensaje"):
         Y AUNQUE TE CÁGUES DE RISA DE MI MALDITO PROYECTO es solo una prueba de lo que tengo que cambiar de eso.
         """)
     else:
-        st.error("Mmm... esa no parece ser la frase correcta. ¡Revisa las iniciales de tus respuestas y vuelve a intentar!")
+        st.error("Mmm... esa no parece ser la frase correcta
