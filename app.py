@@ -1,40 +1,10 @@
 import streamlit as st
-import base64
 
 # --- CONFIGURACIÓN DE PÁGINA ---
 st.set_page_config(page_title="Taylor Swift Quiz", page_icon="🎵")
 
-# --- MÚSICA DE FONDO PERSISTENTE ---
-def autoplay_audio(file_path: str):
-    try:
-        with open(file_path, "rb") as f:
-            data = f.read()
-            b64 = base64.b64encode(data).decode()
-            md = f"""
-                <audio autoplay="true" loop="true">
-                <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
-                </audio>
-                """
-            st.markdown(md, unsafe_allow_html=True)
-    except FileNotFoundError:
-        st.warning(f"⚠️ No se encontró el archivo de audio: {file_path}")
-
-autoplay_audio("fondo.mp3")
-
 # --- INTERFAZ ---
 st.markdown("<h1 style='text-align: center; color: #FF69B4;'>Test Quiz Taylor Swift 🎵✨</h1>", unsafe_allow_html=True)
-
-# --- GALERÍA DE IMÁGENES ---
-cols = st.columns(3)
-imgs = [
-    "https://upload.wikimedia.org/wikipedia/commons/b/b5/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_2.png",
-    "https://upload.wikimedia.org/wikipedia/commons/0/0e/Taylor_Swift_Reputation_Tour_2018_2.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/2/2f/Taylor_Swift_%2849310243477%29.jpg"
-]
-for i, col in enumerate(cols):
-    with col:
-        st.image(imgs[i], use_container_width=True)
-
 st.markdown("---")
 
 # Definición de preguntas
