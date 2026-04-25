@@ -19,12 +19,22 @@ def autoplay_audio(file_path: str):
     except FileNotFoundError:
         st.warning(f"⚠️ No se encontró el archivo de audio: {file_path}")
 
-# Llama a la función (asegúrate de que en tu repo de GitHub el archivo se llame 'fondo.mp3')
 autoplay_audio("fondo.mp3")
 
 # --- INTERFAZ ---
 st.markdown("<h1 style='text-align: center; color: #FF69B4;'>Test Quiz Taylor Swift 🎵✨</h1>", unsafe_allow_html=True)
-st.image("https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?q=80&w=1000", use_container_width=True)
+
+# --- IMÁGENES AGREGADAS ---
+cols = st.columns(3)
+imagenes = [
+    "https://upload.wikimedia.org/wikipedia/commons/b/b5/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_2.png",
+    "https://upload.wikimedia.org/wikipedia/commons/0/0e/Taylor_Swift_Reputation_Tour_2018_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/2f/Taylor_Swift_%2849310243477%29.jpg"
+]
+for i, col in enumerate(cols):
+    with col:
+        st.image(imagenes[i], use_container_width=True)
+
 st.markdown("---")
 
 # Definición de preguntas
@@ -69,7 +79,6 @@ y el 'te extraño' es el eco más amargo de un error cometido bajo la luz de una
 frase_usuario = st.text_input("Escribe tu respuesta aquí:")
 
 if st.button("¡Descubrir mensaje final!"):
-    # Limpieza de texto para aceptar variaciones
     respuesta_limpia = frase_usuario.lower().replace(" ", "").replace("-", "")
     objetivo = "backtodecember"
     
