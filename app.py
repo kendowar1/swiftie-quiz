@@ -19,7 +19,7 @@ def autoplay_audio(file_path: str):
     except FileNotFoundError:
         st.warning(f"⚠️ No se encontró el archivo de audio: {file_path}")
 
-# Llama a la función (Asegúrate de que el archivo en GitHub se llame 'fondo.mp3')
+# Llama a la función (asegúrate de que en tu repo de GitHub el archivo se llame 'fondo.mp3')
 autoplay_audio("fondo.mp3")
 
 # --- INTERFAZ ---
@@ -50,4 +50,35 @@ for i, pregunta in enumerate(preguntas):
     with col2:
         st.markdown("<br>", unsafe_allow_html=True)
         if respuesta == pregunta["correcta"]:
-            st.markdown("
+            st.markdown("### ✅")
+        elif respuesta is not None:
+            st.markdown("### ❌")
+    st.divider()
+
+# Adivinanza final
+st.subheader("🕵️‍♀️ El desafío final (Adivinanza)")
+st.info("""
+No hablo de una danza, sino de una fecha que marca el fin de la calidez. 
+Fui la primera en romper el pacto del orgullo, entregando una confesión que no buscaba el triunfo, 
+sino la redención ante un hombre de piel tan clara como la honestidad que yo perdí. 
+En el mapa de mi discografía, soy el punto exacto donde el invierno se vuelve una disculpa, 
+y el 'te extraño' es el eco más amargo de un error cometido bajo la luz de una estación que juré cambiar.
+¿Qué canción soy?
+""")
+
+frase_usuario = st.text_input("Escribe tu respuesta aquí:")
+
+if st.button("¡Descubrir mensaje final!"):
+    # Limpieza de texto para aceptar variaciones
+    respuesta_limpia = frase_usuario.lower().replace(" ", "").replace("-", "")
+    objetivo = "backtodecember"
+    
+    if None in st.session_state.respuestas_usuario:
+        st.warning("¡Completa todas las preguntas primero!")
+    elif respuesta_limpia == objetivo:
+        st.balloons()
+        st.success("¡Lo lograste! ✨")
+        st.markdown("### Un mensaje para ti:")
+        st.write("Bien reina, aunque esto parezca muy pete, espero haberte divertido aunque sea un ratazo dea, y si te gusto, puedo hacer mas como estos con diferentes artistas o cosas, espero que la hayas pasado bien y que no te haya costado tanto")
+    else:
+        st.error("Mmm... esa no es la canción de la adivinanza. ¡Reinténtalo!")
