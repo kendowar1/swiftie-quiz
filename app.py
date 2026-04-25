@@ -24,16 +24,16 @@ autoplay_audio("fondo.mp3")
 # --- INTERFAZ ---
 st.markdown("<h1 style='text-align: center; color: #FF69B4;'>Test Quiz Taylor Swift 🎵✨</h1>", unsafe_allow_html=True)
 
-# --- IMÁGENES AGREGADAS ---
+# --- GALERÍA DE IMÁGENES ---
 cols = st.columns(3)
-imagenes = [
+imgs = [
     "https://upload.wikimedia.org/wikipedia/commons/b/b5/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_2.png",
     "https://upload.wikimedia.org/wikipedia/commons/0/0e/Taylor_Swift_Reputation_Tour_2018_2.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/2/2f/Taylor_Swift_%2849310243477%29.jpg"
 ]
 for i, col in enumerate(cols):
     with col:
-        st.image(imagenes[i], use_container_width=True)
+        st.image(imgs[i], use_container_width=True)
 
 st.markdown("---")
 
